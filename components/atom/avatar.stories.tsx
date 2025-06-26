@@ -10,8 +10,16 @@ import { expect, fn } from "storybook/test";
 
 const sizeOptions: Size[] = ["sm", "md", "lg", "xl"];
 
+/**
+ * Reusable Avatar component
+ * that supports different sizes
+ * and render placeholder image
+ * when src attribute is not provided,
+ * and also it shows presence indicator
+ * when user is online.
+ * */
 const meta = {
-  title: "Design System/Atom/Button",
+  title: "Design System/Atom/Avatar",
   component: Avatar,
   args: {
     src: "https://external.fyvr2-1.fna.fbcdn.net/emg1/v/t13/2876907341281207127?url=https%3A%2F%2Fassets.iflscience.com%2Fassets%2FarticleNo%2F79584%2FaImg%2F84397%2Fhainan-meta.jpg&fb_obo=1&utld=iflscience.com&stp=c0.5000x0.5000f_dst-jpg_flffffff_p1000x522_q75_tt6&_nc_gid=Aewe_tAL3H9MKoPSCFy9Cw&_nc_oc=AdnEatJWP3nhE01gQiDNuKxFfsmHhLhCoSNCDf26yWi3M44_OdSlLvakF5DTwBNwJjp4DN5RYW0GF4y9UWXfkSl-&ccb=13-1&oh=06_Q3-zAbG4ZqMXRWL3yC4AC01oCxys2mbM4aBsP9i38ENQU_Qv&oe=684BBE2F&_nc_sid=c63717",
@@ -21,11 +29,27 @@ const meta = {
     onClick: fn()
   },
   argTypes: {
+    src: {
+      description:
+        "image source, if the attribute is not provided, then avatar will show placeholder image."
+    },
+    alt: {
+      description:
+        "optional, the text will be showing up somehow image is not available."
+    },
+    isOnline: {
+      description: "if true, avatar will have presence indicator"
+    },
     size: {
+      description: "default md, it changes avatar size",
       control: { type: "radio" },
       options: sizeOptions
+    },
+    onClick: {
+      description: "demo purpose, remove later"
     }
-  }
+  },
+  tags: ["autodocs"]
 } satisfies Meta<typeof Avatar>;
 
 export default meta;
